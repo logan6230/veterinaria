@@ -7,13 +7,19 @@ class veterinariaAPI {
         this.app = express();
         this.app.use(express.json());
         this.adminEspecie = new AdminEspecie();
-        this.app.get('/listar_especies', (req, res) => { this.adminEspecie.listarEspecie(req, res); });
-        this.app.post('/crear_especies', (req, res) => { this.adminEspecie.crearEspecie(req, res); });
-        this.app.use(this.configurarCORS);
         
+        //TO DO: Estoy confiando en los datos que me llega del front end
+        this.app.get('/listar_especies', (req, res) => {
+            this.adminEspecie.listarEspecie(req, res);
+        });
+        this.app.post('/crear_especies', (req, res) => {
+            this.adminEspecie.crearEspecie(req, res);
+        });
+        this.app.use(this.configurarCORS);
+
     }
 
-    configurarCORS(req,res, next) {
+    configurarCORS(req, res, next) {
 
         res.header('Access-Control-Allow-Origin', '*');
         res.header('Access-Control-Allow-Methods', 'GET, POST');
@@ -21,12 +27,13 @@ class veterinariaAPI {
         next();
 
     }
+    //TO DO: No estoy gestionando las excepciones.
     iniciarServidor() {
         this.app.listen(this.puerto, () => {
             console.log(`Escuchando en el puerto ${this.puerto}`);
         });
     }
-    
+
 
 }
 
