@@ -10,15 +10,22 @@ class veterinariaAPI {
 
         this.app.use(this.configurarCORS);
         this.app.use(express.json());
-
-        //TO DO: Eror!!!! Estoy confiando en los datos que me llega del front end
+       
         this.app.get('/listar_especies', (req, res) => {
-
             this.adminEspecie.listarEspecie(req, res);
         });
         this.app.post('/crear_especies', (req, res) => {
-            console.log(req.body);
+         
+            if (req.body.nombre == "" || req.body.especie == "" || req.body.edad == "" || req.body.peso_promedio == "") {
+                return res.status(400).json({
+                    ok: false,
+                    mensaje: 'los campos son obligatorios'
+                });
+            }
+
             this.adminEspecie.crearEspecie(req, res);
+
+
         });
         this.app.use(this.configurarCORS);
 
@@ -31,15 +38,12 @@ class veterinariaAPI {
         next();
 
     }
-    //TO DO: No estoy gestionando las excepciones.
+    
     iniciarServidor() {
         this.app.listen(this.puerto, () => {
             console.log(`Escuchando en el puerto ${this.puerto}`);
         });
     }
-
-
 }
-
 const veterinaria = new veterinariaAPI();
 veterinaria.iniciarServidor();

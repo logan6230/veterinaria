@@ -12,8 +12,8 @@ datasource db {
 model Especie{
   id_especie Int @id @default(autoincrement())
   nombre String
-  clasificacion String
-  esperanza_vida String
+  especie String
+  edad Int
   peso_promedio Float
   
 }

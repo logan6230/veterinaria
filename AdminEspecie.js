@@ -7,15 +7,15 @@ class AdminEspecie {
     }
     async crearEspecie(req, res) {
         const datos = req.body;
-        const especie = await this.prisma.especie.create({
+        const especies = await this.prisma.especie.create({
             data: {
                 nombre: datos.nombre,
-                clasificacion: datos.clasificacion,
-                esperanza_vida: datos.esperanza_vida,
+                especie: datos.especie,
+                edad: datos.edad,
                 peso_promedio: datos.peso_promedio
             }
         });
-        res.json(especie);
+        res.json(especies);
     };
     async listarEspecie(req, res) {
         const especies = await this.prisma.especie.findMany();

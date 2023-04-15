@@ -2,8 +2,8 @@
 CREATE TABLE `Especie` (
     `id_especie` INTEGER NOT NULL AUTO_INCREMENT,
     `nombre` VARCHAR(191) NOT NULL,
-    `clasificacion` VARCHAR(191) NOT NULL,
-    `esperanza_vida` VARCHAR(191) NOT NULL,
+    `especie` VARCHAR(191) NOT NULL,
+    `edad` INTEGER(191) NOT NULL,
     `peso_promedio` DOUBLE NOT NULL,
 
     PRIMARY KEY (`id_especie`)
