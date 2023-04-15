@@ -3,7 +3,7 @@ const AdminEspecie = require('./AdminEspecie');
 
 class veterinariaAPI {
     constructor() {
-        this.puerto = process.env.PORT || 8080;
+        this.PORT = process.env.PORT || 8080;
         this.app = express();
 
         this.adminEspecie = new AdminEspecie();
@@ -40,7 +40,7 @@ class veterinariaAPI {
     }
 
     iniciarServidor() {
-        this.app.listen(this.puerto, () => {
+        this.app.listen(this.PORT, () => {
             console.log(`Escuchando en el puerto ${this.puerto}`);
         });
     }
