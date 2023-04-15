@@ -3,7 +3,7 @@ const AdminEspecie = require('./AdminEspecie');
 
 class veterinariaAPI {
     constructor() {
-        this.puerto = 3000;
+        this.puerto = 3000 || process.env.PORT;
         this.app = express();
 
         this.adminEspecie = new AdminEspecie();
